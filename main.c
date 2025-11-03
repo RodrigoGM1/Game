@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 
-#define MAPAANCHO 15
-#define MAPAALTO 30
+#define MAPAANCHO 45
+#define MAPAALTO 85
 
 static struct termios viaja_terminal, nueva_terminal;
 typedef struct jugador{
@@ -162,12 +162,13 @@ int main()
 
         actualizar(&jugador1);
         renderizar();
-
+        printf("\e[%iA", MAPAANCHO + 2);
 
         sleep(0.5);
-        printf("\e[2J");
-        system("clear");
+        // printf("\e[2J");
+        // system("clear");
     }
     restore_terminal();
+    // printf("\e[?25h");
     return 0;
 }
