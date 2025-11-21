@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "stdbool.h": "c",
+        "ioctl.h": "c",
+        "i_terminal.h": "c",
+        "stdlib.h": "c",
+        "termios.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c",
+        "fcntl.h": "c"
+    }
+}

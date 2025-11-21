@@ -1,4 +1,4 @@
-OBJS = main.o
+OBJS = main.o i_terminal.o
 CFLAGS = -g -Wall
 
 all: game clean
