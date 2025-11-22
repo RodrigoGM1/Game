@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <termios.h>
 #include <stdlib.h>
-
 #include <sys/ioctl.h>
 
 /**
@@ -29,3 +28,5 @@ void procesarEventos();
 int keyPresionado(char key);
 
 void iniciarVentana();
+
+// void crearPantalla();

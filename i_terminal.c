@@ -59,3 +59,12 @@ void iniciarVentana()
     ANCHO = ventana.ws_col;
     ALTO = ventana.ws_row;
 }
+
+// void crearPantalla()
+// {
+//     for(int i = 0; i < ALTO; i++){
+//         for(int j = 0; j < ANCHO; j++){
+//             printf("\e[%d;%dH\e[%dm█", i, j, rand() % 300);
+//         }
+//     }
+// }
