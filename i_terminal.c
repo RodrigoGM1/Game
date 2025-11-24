@@ -41,6 +41,7 @@ void procesarEventos()
         keyEstado[i] = 0;
     while(read(STDERR_FILENO, &c, 1) > 0){
         // printf("Salida: %c\n", c);
+        // system("clear");
         unsigned char uc = (unsigned char)c;
         keyEstado[uc] = 1;
     }
@@ -59,12 +60,3 @@ void iniciarVentana()
     ANCHO = ventana.ws_col;
     ALTO = ventana.ws_row;
 }
-
-// void crearPantalla()
-// {
-//     for(int i = 0; i < ALTO; i++){
-//         for(int j = 0; j < ANCHO; j++){
-//             printf("\e[%d;%dH\e[%dm█", i, j, rand() % 300);
-//         }
-//     }
-// }

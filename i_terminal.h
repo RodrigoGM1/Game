@@ -28,5 +28,3 @@ void procesarEventos();
 int keyPresionado(char key);
 
 void iniciarVentana();
-
-// void crearPantalla();

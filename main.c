@@ -10,7 +10,7 @@ void sleep_ms(int milliseconds)
     system("clear");
 }
 
-int main()
+int main(int argv, char* argc[])
 {
     iniciarTerminal();
 
@@ -20,7 +20,9 @@ int main()
         iniciarVentana();
 
         crearPantalla(ALTO, ANCHO);
+        actualizarPantalla(ALTO, ANCHO);
 
+        // printf("%d\n", actualizarPantalla(ALTO, ANCHO));
         // printf("%d, %d", ANCHO, ALTO);
         // printf("\e[10;10f ");
 
