@@ -6,15 +6,12 @@
 */
 
 struct termios viaja_terminal, nueva_terminal; 
-struct winsize ventana;
 
 /**
  * Variables globales
 */
 
 static char keyEstado[256] = {0};
-extern unsigned int ANCHO;
-extern unsigned int ALTO;
 
 void iniciarTerminal()
 {   
@@ -30,6 +27,7 @@ void iniciarTerminal()
 
 void restaurarTerminal()
 {
+    system("clear");
     tcsetattr(STDIN_FILENO, TCSANOW, &viaja_terminal);
     printf("\e[?25h");
 }
@@ -52,11 +50,4 @@ void procesarEventos()
 int keyPresionado(char key)
 {
     return keyEstado[(unsigned char)key];
-}
-
-void iniciarVentana()
-{
-    ioctl(STDERR_FILENO, TIOCGWINSZ, &ventana);
-    ANCHO = ventana.ws_col;
-    ALTO = ventana.ws_row;
 }

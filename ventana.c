@@ -1,15 +1,18 @@
 #include "ventana.h"
+#include <signal.h>
+/**
+ * Declaracion de estructiras
+ * 
+*/
+
+struct winsize ventana;
 
 /**
  * Variables globales
 */
 
-int cambio = 0;
-
-/**
- * Declaracion de estructiras
- * 
-*/
+extern unsigned int ANCHO;
+extern unsigned int ALTO;
 
 /*
 void crearPantalla(int alto, int ancho)
@@ -22,34 +25,40 @@ void crearPantalla(int alto, int ancho)
 }
 */
 
+void iniciarVentana()
+{
+    ioctl(STDERR_FILENO, TIOCGWINSZ, &ventana);
+    ANCHO = ventana.ws_col;
+    ALTO = ventana.ws_row;
+}
+
 void crearPantalla(int alto, int ancho)
 {   
     printf("\e[0;0H╔");
     printf("\e[0;%dH╗", ancho);
-
+    for(int y = 2; y < alto; y++){
+        printf("\e[%d;0H║", y);    
+        printf("\e[%d;%dH║", y, ancho);
+    }
+    for(int x = 2; x < ancho; x++){
+        printf("\e[0;%dH═", x);    
+        printf("\e[%d;%dH═", alto, x);
+    }
     printf("\e[%d;0H╚", alto);
     printf("\e[%d;%dH╝", alto, ancho);
 }
 
-int actualizarPantalla(int alto, int ancho)
+int actualizarPantalla(int tec)
 {
-    int cAlto = 0;
-    int cAncho = 0;
-
-    if(cambio == 0){
-        if(cAlto = alto || cAncho = ancho){
-            
-        }
-        
-
-        cambio = 1;
-        printf("si hay cambio\n");
+    signal(SIGWINCH, cambioVentanaS);
+    if(tec){
+        system("clear");
     }
-
-    if(cambio == 1){
-        printf("no hay cambio\n");
-    }
-
-    printf("%d, %d", cAlto, cAncho);
     return 0;
+}
+
+void cambioVentanaS(int sig) {
+    if (sig == SIGWINCH) {
+        system("clear");
+    }
 }

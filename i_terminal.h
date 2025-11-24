@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <termios.h>
 #include <stdlib.h>
-#include <sys/ioctl.h>
 
 /**
  * Variables globales

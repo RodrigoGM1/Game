@@ -4,11 +4,11 @@
 unsigned int ANCHO;
 unsigned int ALTO;
 
-void sleep_ms(int milliseconds)
-{
-    usleep(milliseconds * 1000);
-    system("clear");
-}
+// void sleep_ms(int milliseconds)
+// {
+//     usleep(milliseconds * 1000);
+//     system("clear");
+// }
 
 int main(int argv, char* argc[])
 {
@@ -20,7 +20,7 @@ int main(int argv, char* argc[])
         iniciarVentana();
 
         crearPantalla(ALTO, ANCHO);
-        actualizarPantalla(ALTO, ANCHO);
+        actualizarPantalla(keyPresionado('-'));
 
         // printf("%d\n", actualizarPantalla(ALTO, ANCHO));
         // printf("%d, %d", ANCHO, ALTO);
@@ -34,12 +34,11 @@ int main(int argv, char* argc[])
         //         printf(" "); 
         //     }
         // }
-
+        usleep(1000);
         // sleep_ms(10);
         // printf("\e[0;0H");
     }
 
     restaurarTerminal();
-    system("clear");
     return 0;
 }
