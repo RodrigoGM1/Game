@@ -1,5 +1,6 @@
 #include "i_terminal.h"
 #include "ventana.h"
+#include <ncurses.h>
 
 unsigned int ANCHO;
 unsigned int ALTO;
@@ -13,7 +14,7 @@ unsigned int ALTO;
 int main(int argv, char* argc[])
 {
     iniciarTerminal();
-
+    // initscr();
     while (1){
         // printf("\e[0;0H");
         procesarEventos();
@@ -34,9 +35,10 @@ int main(int argv, char* argc[])
         //         printf(" "); 
         //     }
         // }
-        usleep(1000);
         // sleep_ms(10);
         // printf("\e[0;0H");
+        // usleep(5000);
+        // printf("\e[2J");
     }
 
     restaurarTerminal();

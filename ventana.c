@@ -19,7 +19,7 @@ void crearPantalla(int alto, int ancho)
 {
     for(int y = 0; y < alto; y++){
         for(int x = 0; x < ancho; x++){
-            printf("\e[%d;%dH\e[%dm█", i, j, rand() % 300);
+            printf("\e[%d;%dH\e[%dm█", y, x, rand() % 300);
         }
     }
 }
@@ -51,6 +51,7 @@ void crearPantalla(int alto, int ancho)
 int actualizarPantalla(int tec)
 {
     signal(SIGWINCH, cambioVentanaS);
+    
     if(tec){
         system("clear");
     }
