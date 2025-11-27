@@ -21,9 +21,9 @@ void iniciarTerminal();
 void restaurarTerminal();
 
 void procesarEventos();
+void ocultarCursor();
+
 
 //Comprobar si las funcion se queda
 
 int keyPresionado(char key);
-
-void iniciarVentana();

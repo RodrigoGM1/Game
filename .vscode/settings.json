@@ -9,6 +9,7 @@
         "stdio.h": "c",
         "fcntl.h": "c",
         "dlg_keys.h": "c",
-        "keylockerintrin.h": "c"
+        "keylockerintrin.h": "c",
+        "cwchar": "c"
     }
 }

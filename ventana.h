@@ -17,3 +17,6 @@ void iniciarVentana();
 void crearPantalla(int alto, int ancho);
 int actualizarPantalla(int tec);
 void cambioVentanaS(int sig);
+void sleep_ms(int milliseconds);
+
+void m();

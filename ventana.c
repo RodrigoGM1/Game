@@ -1,5 +1,11 @@
 #include "ventana.h"
 #include <signal.h>
+
+#include <stdio.h>
+#include <locale.h>
+#include <stddef.h>
+#include <wchar.h>
+
 /**
  * Declaracion de estructiras
  * 
@@ -51,7 +57,6 @@ void crearPantalla(int alto, int ancho)
 int actualizarPantalla(int tec)
 {
     signal(SIGWINCH, cambioVentanaS);
-    
     if(tec){
         system("clear");
     }
@@ -62,4 +67,17 @@ void cambioVentanaS(int sig) {
     if (sig == SIGWINCH) {
         system("clear");
     }
+}
+
+void sleep_ms(int milliseconds)
+{
+    usleep(milliseconds * 1000);
+    system("clear");
+}
+
+void m()
+{
+    // setlocale(LC_ALL, ""); 
+    wchar_t mi_cadena[] = L" ·⋅∙•∘○◌◍◎●◉⬤";
+    wprintf(L"%ls\n", mi_cadena);
 }
