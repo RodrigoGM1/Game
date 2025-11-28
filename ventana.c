@@ -17,6 +17,7 @@ struct winsize ventana;
  * Variables globales
 */
 
+static char keyEstado[256] = {0};
 extern unsigned int ANCHO;
 extern unsigned int ALTO;
 
@@ -75,9 +76,59 @@ void sleep_ms(int milliseconds)
     system("clear");
 }
 
-void m()
+void crearCamara(int alto, int ancho, Vec2 pos)
 {
-    // setlocale(LC_ALL, ""); 
-    wchar_t mi_cadena[] = L" ·⋅∙•∘○◌◍◎●◉⬤";
-    wprintf(L"%ls\n", mi_cadena);
+
+    for(int y = 2; y < ALTO - 5; y++){
+        for(int x = 2; x < ANCHO - 5; x++){
+            printf("\e[%d;%df ", y, x);
+            printf("\e[%d;%df*", pos.y, pos.x);
+        }
+        printf("\n");
+    }
 }
+
+int actualizarPos(Vec2* pos)
+{
+
+    if(keyPresionado('w') || keyPresionado('W')){
+        pos->y -= 1;
+    }
+    else if(keyPresionado('s') || keyPresionado('S')){
+        pos->y += 1;
+    }
+    else if(keyPresionado('a') || keyPresionado('A')){
+        pos->x -= 1;
+    }
+    else if(keyPresionado('d') || keyPresionado('D')){
+        pos->x += 1;
+    }
+    
+    return 0;
+}
+
+// Manejador de eventos
+
+void procesarEventos()
+{
+    char c;
+    for(int i = 0; i < 256; i++)
+        keyEstado[i] = 0;
+    while(read(STDERR_FILENO, &c, 1) > 0){
+        // printf("Salida: %c\n", c);
+        unsigned char uc = (unsigned char)c;
+        keyEstado[uc] = 1;
+    }
+}
+
+int keyPresionado(char key)
+{
+    return keyEstado[(unsigned char)key];
+}
+
+// void m()
+// {
+//     // setlocale(LC_ALL, ""); 
+//     wchar_t mi_cadena[] = L" ·⋅∙•∘○◌◍◎●◉⬤";
+//     wprintf(L"%ls\n", mi_cadena);
+// }

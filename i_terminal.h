@@ -20,10 +20,10 @@ extern struct winsize ventana;
 void iniciarTerminal();
 void restaurarTerminal();
 
-void procesarEventos();
+// void procesarEventos();
 void ocultarCursor();
 
 
 //Comprobar si las funcion se queda
 
-int keyPresionado(char key);
+// int keyPresionado(char key);

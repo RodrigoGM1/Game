@@ -11,7 +11,7 @@ struct termios viaja_terminal, nueva_terminal;
  * Variables globales
 */
 
-static char keyEstado[256] = {0};
+// static char keyEstado[256] = {0};
 
 void iniciarTerminal()
 {   
@@ -32,18 +32,17 @@ void restaurarTerminal()
     fflush(stdout);
 }
 
-void procesarEventos()
-{
-    char c;
-    for(int i = 0; i < 256; i++)
-        keyEstado[i] = 0;
-    while(read(STDERR_FILENO, &c, 1) > 0){
-        printf("Salida: %c\n", c);
-        // system("clear");
-        unsigned char uc = (unsigned char)c;
-        keyEstado[uc] = 1;
-    }
-}
+// void procesarEventos()
+// {
+//     char c;
+//     for(int i = 0; i < 256; i++)
+//         keyEstado[i] = 0;
+//     while(read(STDERR_FILENO, &c, 1) > 0){
+//         printf("Salida: %c\n", c);
+//         unsigned char uc = (unsigned char)c;
+//         keyEstado[uc] = 1;
+//     }
+// }
 
 void ocultarCursor()
 {
@@ -54,7 +53,7 @@ void ocultarCursor()
 
 //Comprobar si las funcion se queda
 
-int keyPresionado(char key)
-{
-    return keyEstado[(unsigned char)key];
-}
+// int keyPresionado(char key)
+// {
+//     return keyEstado[(unsigned char)key];
+// }
