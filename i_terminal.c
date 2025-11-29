@@ -1,5 +1,12 @@
 #include "i_terminal.h"
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <termios.h>
+#include <stdlib.h>
+
 /**
  * Declaracion de estructiras
  * 

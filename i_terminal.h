@@ -1,9 +1,5 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <termios.h>
-#include <stdlib.h>
+#ifndef I_TERMINAL_H
+#define I_TERMINAL_H
 
 /**
  * Variables globales
@@ -27,3 +23,5 @@ void ocultarCursor();
 //Comprobar si las funcion se queda
 
 // int keyPresionado(char key);
+
+#endif // I_TERMINAL_H

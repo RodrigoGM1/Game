@@ -10,6 +10,8 @@
         "fcntl.h": "c",
         "dlg_keys.h": "c",
         "keylockerintrin.h": "c",
-        "cwchar": "c"
+        "cwchar": "c",
+        "mapa.h": "c",
+        "stdint.h": "c"
     }
 }

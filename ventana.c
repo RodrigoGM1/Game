@@ -1,10 +1,10 @@
 #include "ventana.h"
-#include <signal.h>
 
 #include <stdio.h>
-#include <locale.h>
-#include <stddef.h>
-#include <wchar.h>
+#include <stdlib.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#include <signal.h>
 
 /**
  * Declaracion de estructiras
@@ -76,6 +76,31 @@ void sleep_ms(int milliseconds)
     system("clear");
 }
 
+/**
+ * Manejador de eventos
+*/
+
+void procesarEventos()
+{
+    char c;
+    for(int i = 0; i < 256; i++)
+        keyEstado[i] = 0;
+    while(read(STDERR_FILENO, &c, 1) > 0){
+        // printf("Salida: %c\n", c);
+        unsigned char uc = (unsigned char)c;
+        keyEstado[uc] = 1;
+    }
+}
+
+int keyPresionado(char key)
+{
+    return keyEstado[(unsigned char)key];
+}
+
+/**
+ * Funciones para menajar el mapa y la ""Camara""
+*/
+
 void crearCamara(int alto, int ancho, Vec2 pos)
 {
 
@@ -106,29 +131,3 @@ int actualizarPos(Vec2* pos)
     
     return 0;
 }
-
-// Manejador de eventos
-
-void procesarEventos()
-{
-    char c;
-    for(int i = 0; i < 256; i++)
-        keyEstado[i] = 0;
-    while(read(STDERR_FILENO, &c, 1) > 0){
-        // printf("Salida: %c\n", c);
-        unsigned char uc = (unsigned char)c;
-        keyEstado[uc] = 1;
-    }
-}
-
-int keyPresionado(char key)
-{
-    return keyEstado[(unsigned char)key];
-}
-
-// void m()
-// {
-//     // setlocale(LC_ALL, ""); 
-//     wchar_t mi_cadena[] = L" ·⋅∙•∘○◌◍◎●◉⬤";
-//     wprintf(L"%ls\n", mi_cadena);
-// }
