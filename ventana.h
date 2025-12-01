@@ -28,7 +28,10 @@ int keyPresionado(char key);
  * Funciones para menajar el mapa y la ""Camara""
 */
 
+// void dibujarMapa(Mapa* mapa, Vec2 pos, int alto, int ancho);
+
 void crearCamara(int alto, int ancho, Vec2 pos);
+
 int actualizarPos(Vec2* pos);
 
 #endif // VENTANA_H

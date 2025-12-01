@@ -1,4 +1,4 @@
-OBJS = main.o i_terminal.o ventana.o mapa.o
+OBJS = main.o i_terminal.o ventana.o
 CFLAGS = -g -Wall
 
 all: game clean

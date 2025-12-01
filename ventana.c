@@ -101,11 +101,32 @@ int keyPresionado(char key)
  * Funciones para menajar el mapa y la ""Camara""
 */
 
+/*
+void dibujarMapa(Mapa* mapa, Vec2 pos, int alto, int ancho)
+{  
+    int yInicio = pos.y - ((alto - 5) / 2);
+    int yFin = pos.y + ((alto - 5) / 2);
+    int xInicio = pos.x - ((ancho - 5) / 2);
+    int xFin = pos.x + ((ancho - 5) / 2);
+
+    // printf("\e[2;2H");
+
+            for(int y = yInicio; y < yFin; y++){
+                for(int x = xInicio; x < xFin; x++){
+                    if(mapa->mapa[x][y] == 0){
+                        printf("*");
+                    }
+                }
+                printf("\n");
+            }
+
+    
+}
+*/
 void crearCamara(int alto, int ancho, Vec2 pos)
 {
-
-    for(int y = 2; y < ALTO - 5; y++){
-        for(int x = 2; x < ANCHO - 5; x++){
+    for(int y = 2; y < ALTO; y++){
+        for(int x = 2; x < ANCHO; x++){
             printf("\e[%d;%df ", y, x);
             printf("\e[%d;%df*", pos.y, pos.x);
         }
@@ -115,7 +136,8 @@ void crearCamara(int alto, int ancho, Vec2 pos)
 
 int actualizarPos(Vec2* pos)
 {
-
+    pos->x += 1;
+    /*
     if(keyPresionado('w') || keyPresionado('W')){
         pos->y -= 1;
     }
@@ -128,6 +150,6 @@ int actualizarPos(Vec2* pos)
     else if(keyPresionado('d') || keyPresionado('D')){
         pos->x += 1;
     }
-    
+    */
     return 0;
 }

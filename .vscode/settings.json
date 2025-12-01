@@ -12,6 +12,7 @@
         "keylockerintrin.h": "c",
         "cwchar": "c",
         "mapa.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "vectores.h": "c"
     }
 }

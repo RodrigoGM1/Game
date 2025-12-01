@@ -12,40 +12,22 @@ int main(int argv, char* argc[])
     
     iniciarTerminal();
 
-    // int mapa[XMAPSEG][YMAPSEG];
+    Vec2 pos = {20, 20};
 
-    // cargarMapa(mapa);
-
-    Mapa mapa = {"Sector1"};
-    Vec2 pos = {5, 5};
-    cargarMapa(&mapa, &pos);
-
-    /*
-    for(int y = 1; y < XMAPSEG; y++){
-        for(int x = 1; x < YMAPSEG; x++){
-            if(mapa.mapa[y][x] == 0){
-                printf(" ");
-            }else if(mapa.mapa[y][x] == 1){
-                printf("*");
-            }
-        }
-        printf("\n");
-    }
-    */
-    
     while (1){
         procesarEventos();
         
         iniciarVentana();
 
         crearPantalla(ALTO, ANCHO);
+
+        // dibujarMapa(&mapa, pos, ALTO, ANCHO);
+        
         actualizarPantalla(keyPresionado('-'));
-
         actualizarPos(&pos);
-
         crearCamara(ALTO, ANCHO, pos);
     
-        // sleep_ms(10);
+        sleep_ms(15);
     }
 
     restaurarTerminal();
