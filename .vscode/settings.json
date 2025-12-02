@@ -13,6 +13,7 @@
         "cwchar": "c",
         "mapa.h": "c",
         "stdint.h": "c",
-        "vectores.h": "c"
+        "vectores.h": "c",
+        "xfd_icon": "c"
     }
 }

@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <signal.h>
 
+#include <stdint.h>
+
 /**
  * Declaracion de estructiras
  * 
