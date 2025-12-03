@@ -75,7 +75,10 @@ void cambioVentanaS(int sig) {
 void sleep_ms(int milliseconds)
 {
     usleep(milliseconds * 1000);
-    system("clear");
+    // printf("\e[0K");
+    printf("\e[1J");
+    printf("\e[0;0H");
+    // system("clear");
 }
 
 /**
@@ -138,8 +141,8 @@ void crearCamara(int alto, int ancho, Vec2 pos)
 
 int actualizarPos(Vec2* pos)
 {
-    pos->x += 1;
-    /*
+    // pos->x += 1;
+    
     if(keyPresionado('w') || keyPresionado('W')){
         pos->y -= 1;
     }
@@ -152,6 +155,6 @@ int actualizarPos(Vec2* pos)
     else if(keyPresionado('d') || keyPresionado('D')){
         pos->x += 1;
     }
-    */
+    
     return 0;
 }

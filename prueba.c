@@ -187,23 +187,22 @@ int main() {
     }
     */
 
-    int mapa[3][3] = {
-        {1,1,1},
-        {1,0,1},
-        {1,1,1},
-    };
+    int mapa[XSEGMAP][YSEGMAP];
 
-    for(int x = 0; x < 3; x++){
-        for(int y = 0; y < 3; y++){
+    for(int y = 0; y < XSEGMAP; y++){
+        for(int x = 0; x < YSEGMAP; x++){
+            mapa[x][y] = 0;
+        }
+    }
 
-            for(int y = 0; y < 3; y++){
-                for(int x = 0; x < 3; x++){
-                    printf("%d", mapa[x][y]);
-                }
+    for(int y = 0; y < XSEGMAP; y++){
+        for(int x = 0; x < YSEGMAP; x++){
+            if(mapa[x][y] == 0){
+                printf("○");
             }
-
         }
         printf("\n");
     }
+
     return 0;
 }
