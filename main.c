@@ -9,36 +9,28 @@ unsigned int ALTO;
 
 int main(int argv, char* argc[])
 {
-    
     iniciarTerminal();
     
     Mapa mapa = {"Sector1"};
-    Vec2 pos = {20, 20};
+    Vec2 pos = {XMAPSEG / 2, YMAPSEG / 2};
 
     cargarMapa(&mapa, &pos);
 
     while (1){
         procesarEventos();
-
-        
-        for(int y = 0; y < 30; y++){
-            for(int x = 0; x < 30; x++){
-                printf("%d", mapa.mapa[x][y]);
-            }
-            printf("\n");
-        }
-        
         iniciarVentana();
 
         crearPantalla(ALTO, ANCHO);
 
-        // dibujarMapa(&mapa, pos, ALTO, ANCHO);
+        dibujarMapa(&mapa, &pos, ALTO, ANCHO);
+        actualizarPos(&pos);
+        actualizarMapa(&mapa, &pos);
         
         // actualizarPantalla(keyPresionado('-'));
-        // actualizarPos(&pos);
-        // crearCamara(ALTO, ANCHO, pos);
     
-        sleep_ms(15);
+        
+        // sleep_ms(5);
+        // printf("\e[2;2H%d, %d", pos.x, pos.y);
     }
 
     restaurarTerminal();

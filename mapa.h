@@ -21,5 +21,8 @@ typedef struct {
 */
 
 int cargarMapa(Mapa* mapa, Vec2* pos);
+// void dibujarMapa(Mapa* mapa, int alto, int ancho);
+void dibujarMapa(Mapa* mapa, Vec2* pos, int alto, int ancho);
+void actualizarMapa(Mapa* mapa, Vec2* pos);
 
 #endif // MAPA_H

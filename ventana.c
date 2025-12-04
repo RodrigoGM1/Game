@@ -43,17 +43,17 @@ void iniciarVentana()
 
 void crearPantalla(int alto, int ancho)
 {   
-    printf("\e[0;0H╔");
-    printf("\e[0;%dH╗", ancho);
+    printf("\e[1;1H╔");
+    printf("\e[1;%dH╗", ancho);
     for(int y = 2; y < alto; y++){
-        printf("\e[%d;0H║", y);    
+        printf("\e[%d;1H║", y);    
         printf("\e[%d;%dH║", y, ancho);
     }
     for(int x = 2; x < ancho; x++){
-        printf("\e[0;%dH═", x);    
+        printf("\e[1;%dH═", x);    
         printf("\e[%d;%dH═", alto, x);
     }
-    printf("\e[%d;0H╚", alto);
+    printf("\e[%d;1H╚", alto);
     printf("\e[%d;%dH╝", alto, ancho);
 }
 
@@ -105,27 +105,19 @@ int keyPresionado(char key)
 /**
  * Funciones para menajar el mapa y la ""Camara""
 */
-
 /*
-void dibujarMapa(Mapa* mapa, Vec2 pos, int alto, int ancho)
+void dibujarMapa(Mapa* mapa, int alto, int ancho)
 {  
-    int yInicio = pos.y - ((alto - 5) / 2);
-    int yFin = pos.y + ((alto - 5) / 2);
-    int xInicio = pos.x - ((ancho - 5) / 2);
-    int xFin = pos.x + ((ancho - 5) / 2);
-
-    // printf("\e[2;2H");
-
-            for(int y = yInicio; y < yFin; y++){
-                for(int x = xInicio; x < xFin; x++){
-                    if(mapa->mapa[x][y] == 0){
-                        printf("*");
-                    }
-                }
-                printf("\n");
+    for(int yp = 2, y = 0; yp < alto || y < alto - 2; yp++, y++){
+        for(int xp = 2, x = 0; xp < ancho || x < ancho - 2; xp++, x++){
+            if(mapa->mapa[y][x] == 1){
+                printf("\e[%d;%dH*", yp, xp);
+            }else if(mapa->mapa[y][x] == 0){
+                printf("\e[%d;%dH ", yp, xp);
             }
-
-    
+        }
+        printf("\n");
+    }
 }
 */
 void crearCamara(int alto, int ancho, Vec2 pos)
@@ -140,20 +132,18 @@ void crearCamara(int alto, int ancho, Vec2 pos)
 }
 
 int actualizarPos(Vec2* pos)
-{
-    // pos->x += 1;
-    
+{   
     if(keyPresionado('w') || keyPresionado('W')){
-        pos->y -= 1;
-    }
-    else if(keyPresionado('s') || keyPresionado('S')){
-        pos->y += 1;
-    }
-    else if(keyPresionado('a') || keyPresionado('A')){
         pos->x -= 1;
     }
-    else if(keyPresionado('d') || keyPresionado('D')){
+    else if(keyPresionado('s') || keyPresionado('S')){
         pos->x += 1;
+    }
+    else if(keyPresionado('a') || keyPresionado('A')){
+        pos->y -= 1;
+    }
+    else if(keyPresionado('d') || keyPresionado('D')){
+        pos->y += 1;
     }
     
     return 0;
