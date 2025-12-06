@@ -10,7 +10,7 @@
  * 
 */
 #include "vectores.h"
-// #include "mapa.h"
+#include "mapa.h"
 
 void iniciarVentana();
 void crearPantalla(int alto, int ancho);
@@ -29,7 +29,6 @@ int keyPresionado(char key);
  * Funciones para menajar el mapa y la ""Camara""
 */
 
-// void dibujarMapa(Mapa* mapa, int alto, int ancho);
 
 void crearCamara(int alto, int ancho, Vec2 pos);
 

@@ -14,17 +14,20 @@ int main(int argv, char* argc[])
     Mapa mapa = {"Sector1"};
     Vec2 pos = {XMAPSEG / 2, YMAPSEG / 2};
 
-    cargarMapa(&mapa, &pos);
+    cargarMapa(&mapa, pos);
 
     while (1){
         procesarEventos();
         iniciarVentana();
-
         crearPantalla(ALTO, ANCHO);
-
-        dibujarMapa(&mapa, &pos, ALTO, ANCHO);
+        
+        dibujarMapa(&mapa, pos, ANCHO, ALTO);
         actualizarPos(&pos);
-        actualizarMapa(&mapa, &pos);
+        actualizarMapa(&mapa, pos);
+
+        // dibujarMapa(&mapa, &pos, ALTO, ANCHO);
+        // actualizarPos(&pos);
+        // actualizarMapa(&mapa, &pos);
         
         // actualizarPantalla(keyPresionado('-'));
     
