@@ -21,7 +21,7 @@ int main(int argv, char* argc[])
         iniciarVentana();
         crearPantalla(ALTO, ANCHO);
         
-        dibujarMapa(&mapa, pos, ANCHO, ALTO);
+        dibujarMapa(&mapa, pos, ALTO, ANCHO);
         actualizarPos(&pos);
         actualizarMapa(&mapa, pos);
 

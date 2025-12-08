@@ -13,7 +13,7 @@
 
 typedef struct {
     char nombre[10];
-    int mapa[XMAPSEG][YMAPSEG];
+    char mapa[XMAPSEG][YMAPSEG];
 } Mapa;
 
 /**

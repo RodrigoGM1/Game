@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -603,3 +604,25 @@ int main() {
 }
 
 #endif
+*/
+
+#include <stdio.h>
+// Para Windows
+// #include <windows.h>
+// Para Linux/macOS
+#include <unistd.h> 
+
+int main() {
+    int segundos = 0;
+    printf("Contador de segundos:\n");
+    while (1) { // Bucle infinito
+        printf("%d\n", segundos);
+        segundos++;
+        // sleep(1); // Espera 1 segundo (Linux/macOS)
+        // Sleep(1000); // Espera 1000 milisegundos (Windows)
+        // Si usas Windows, descomenta la línea de windows.h y usa Sleep(1000)
+        // Si usas Linux/macOS, usa sleep(1)
+        sleep(2); // Para Linux/macOS
+    }
+    return 0;
+}
