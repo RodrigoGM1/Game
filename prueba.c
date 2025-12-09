@@ -605,7 +605,7 @@ int main() {
 
 #endif
 */
-
+/*
 #include <stdio.h>
 // Para Windows
 // #include <windows.h>
@@ -624,5 +624,41 @@ int main() {
         // Si usas Linux/macOS, usa sleep(1)
         sleep(2); // Para Linux/macOS
     }
+    return 0;
+}
+*/
+/*
+#define VGA 0xb8000
+
+void inicio()
+{
+    char* video_memoria = (char*) VGA;
+    *video_memoria = 'X';
+}
+
+int main()
+{
+    inicio();
+    return 0;
+}
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    char nave[3][3] = {
+        {' ','*',' '},
+        {'*','*','*'},
+        {' ','*',' '}
+    };
+
+    for(int x = 0; x < 3; x++){
+        for(int y = 0; y < 3; y++){
+            printf("%c", nave[x][y]);
+        }
+        printf("\n");
+    }
+
     return 0;
 }

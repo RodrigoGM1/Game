@@ -20,12 +20,6 @@ typedef struct {
  * Variables globales
 */
 
-/*
-int cargarMapa(Mapa* mapa, Vec2* pos);
-void dibujarMapa(Mapa* mapa, Vec2* pos, int alto, int ancho);
-void actualizarMapa(Mapa* mapa, Vec2* pos);
-*/
-
 int cargarMapa(Mapa* mapa, Vec2 pos);
 void dibujarMapa(Mapa* mapa, Vec2 pos, int alto, int ancho);
 void actualizarMapa(Mapa* mapa, Vec2 pos);

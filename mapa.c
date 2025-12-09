@@ -27,6 +27,10 @@ int cargarMapa(Mapa* mapa, Vec2 pos)
         }
     }
     mapa->mapa[pos.x][pos.y] = '*';
+    mapa->mapa[pos.x+1][pos.y] = '*';
+    mapa->mapa[pos.x-1][pos.y] = '*';
+    mapa->mapa[pos.x][pos.y+1] = '*';
+    mapa->mapa[pos.x][pos.y-1] = '*';
     return 0;
 }
 

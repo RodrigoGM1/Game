@@ -30,7 +30,7 @@ int keyPresionado(char key);
 */
 
 
-void crearCamara(int alto, int ancho, Vec2 pos);
+// void crearCamara(int alto, int ancho, Vec2 pos);
 
 int actualizarPos(Vec2* pos);
 

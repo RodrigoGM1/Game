@@ -24,14 +24,9 @@ int main(int argv, char* argc[])
         dibujarMapa(&mapa, pos, ALTO, ANCHO);
         actualizarPos(&pos);
         actualizarMapa(&mapa, pos);
-
-        // dibujarMapa(&mapa, &pos, ALTO, ANCHO);
-        // actualizarPos(&pos);
-        // actualizarMapa(&mapa, &pos);
         
         // actualizarPantalla(keyPresionado('-'));
     
-        
         // sleep_ms(5);
         // printf("\e[2;2H%d, %d", pos.x, pos.y);
     }

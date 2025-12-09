@@ -106,6 +106,7 @@ int keyPresionado(char key)
  * Funciones para menajar el mapa y la ""Camara""
 */
 
+/*
 void crearCamara(int alto, int ancho, Vec2 pos)
 {
     for(int y = 2; y < ALTO; y++){
@@ -116,6 +117,7 @@ void crearCamara(int alto, int ancho, Vec2 pos)
         printf("\n");
     }
 }
+*/
 
 int actualizarPos(Vec2* pos)
 {
