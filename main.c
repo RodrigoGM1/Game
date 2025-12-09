@@ -1,6 +1,7 @@
 #include "i_terminal.h"
 #include "ventana.h"
 #include "mapa.h"
+#include "nave.h"
 
 #include <stdio.h>
 
