@@ -1,8 +1,8 @@
 #ifndef MAPA_H
 #define MAPA_H
 
-#define XMAPSEG 1000
-#define YMAPSEG 1000
+#define XMAPSEG 40
+#define YMAPSEG 20
 
 #include "vectores.h"
 

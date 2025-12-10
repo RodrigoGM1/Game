@@ -1,7 +1,7 @@
 OBJS = main.o i_terminal.o ventana.o mapa.o nave.o
 CFLAGS = -g -Wall
 
-all: game clean
+all: clean game clean
 
 game: $(OBJS)
 	gcc -o $@ $?

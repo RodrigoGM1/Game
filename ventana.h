@@ -22,8 +22,8 @@ void sleep_ms(int milliseconds);
  * Manejador de eventos
 */
 
-void procesarEventos();
-int keyPresionado(char key);
+// void procesarEventos();
+// int keyPresionado(char key);
 
 /**
  * Funciones para menajar el mapa y la ""Camara""
@@ -32,6 +32,6 @@ int keyPresionado(char key);
 
 // void crearCamara(int alto, int ancho, Vec2 pos);
 
-int actualizarPos(Vec2* pos);
+// int actualizarPos(Vec2* pos);
 
 #endif // VENTANA_H

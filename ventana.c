@@ -19,7 +19,7 @@ struct winsize ventana;
  * Variables globales
 */
 
-static char keyEstado[256] = {0};
+// static char keyEstado[256] = {0};
 extern unsigned int ANCHO;
 extern unsigned int ALTO;
 
@@ -84,7 +84,7 @@ void sleep_ms(int milliseconds)
 /**
  * Manejador de eventos
 */
-
+/*
 void procesarEventos()
 {
     char c;
@@ -96,11 +96,13 @@ void procesarEventos()
         keyEstado[uc] = 1;
     }
 }
-
+*/
+/*
 int keyPresionado(char key)
 {
     return keyEstado[(unsigned char)key];
 }
+*/
 
 /**
  * Funciones para menajar el mapa y la ""Camara""
@@ -118,7 +120,7 @@ void crearCamara(int alto, int ancho, Vec2 pos)
     }
 }
 */
-
+/*
 int actualizarPos(Vec2* pos)
 {
     if(keyPresionado('w') || keyPresionado('W')){
@@ -135,3 +137,4 @@ int actualizarPos(Vec2* pos)
     }
     return 0;
 }
+*/

@@ -605,15 +605,19 @@ int main() {
 
 #endif
 */
-/*
+
 #include <stdio.h>
 // Para Windows
 // #include <windows.h>
 // Para Linux/macOS
 #include <unistd.h> 
+#include <time.h>
 
 int main() {
     int segundos = 0;
+
+    clock_t incio;
+
     printf("Contador de segundos:\n");
     while (1) { // Bucle infinito
         printf("%d\n", segundos);
@@ -622,27 +626,13 @@ int main() {
         // Sleep(1000); // Espera 1000 milisegundos (Windows)
         // Si usas Windows, descomenta la línea de windows.h y usa Sleep(1000)
         // Si usas Linux/macOS, usa sleep(1)
-        sleep(2); // Para Linux/macOS
+        sleep(1); // Para Linux/macOS
     }
     return 0;
 }
-*/
+
+
 /*
-#define VGA 0xb8000
-
-void inicio()
-{
-    char* video_memoria = (char*) VGA;
-    *video_memoria = 'X';
-}
-
-int main()
-{
-    inicio();
-    return 0;
-}
-*/
-
 #include <stdio.h>
 
 int main()
@@ -662,3 +652,4 @@ int main()
 
     return 0;
 }
+*/

@@ -3,17 +3,40 @@
 
 #include "vectores.h"
 
-typedef enum _Size_nave {
-    NAVE_S,
-    NAVE_M,
-    NAVE_L,
-    NAVE_XL
-} Size_nave;
+// extern unsigned char utimaT;
+ 
+extern float velocidad;
 
-typedef struct _Nave {
+enum Puntos_Cadinales {
+    ESTE,
+    SURESTE,
+    SUR,
+    SUROESTE,
+    OESTE,
+    NORTE
+};
+
+typedef struct _nave {
     char* nombre;
-    Size_nave tm_nave;
-    Vec2 posInicial;
+    Vec2 posisionNave;
+    enum Puntos_Cadinales pc_nave;
 } Nave;
 
+Nave inciarNave(int posisionIx, int posisionIy);
+
+void procesarEventos();
+int keyPresionado(char key);
+// int actualizarPos(Vec2* pos);
+int actualizarPos(Vec2* pos);
+
 #endif
+
+// char nave[10][10] = 
+// {
+//     "             ",
+//     "      ─╗     ",
+//     "       ╠════╣",
+//     "      ─╝     ",
+//     "             ",
+//     "             ",
+// };
