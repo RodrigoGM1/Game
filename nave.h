@@ -2,10 +2,8 @@
 #define NAVE_H
 
 #include "vectores.h"
-
-// extern unsigned char utimaT;
  
-extern float velocidad;
+extern double velocidad;
 
 enum Puntos_Cadinales {
     ESTE,
@@ -18,16 +16,21 @@ enum Puntos_Cadinales {
 
 typedef struct _nave {
     char* nombre;
-    Vec2 posisionNave;
+    double velocidadActual;
     enum Puntos_Cadinales pc_nave;
+    Vec2 posisionNave;
+    Vecd2 vel_m_m;
 } Nave;
 
 Nave inciarNave(int posisionIx, int posisionIy);
 
 void procesarEventos();
 int keyPresionado(char key);
+int sistemaVelocidad(double vel);
+double setVelocidad();
+
 // int actualizarPos(Vec2* pos);
-int actualizarPos(Vec2* pos);
+int actualizarPos(Nave* nave);
 
 #endif
 

@@ -605,7 +605,7 @@ int main() {
 
 #endif
 */
-
+/*
 #include <stdio.h>
 // Para Windows
 // #include <windows.h>
@@ -626,11 +626,46 @@ int main() {
         // Sleep(1000); // Espera 1000 milisegundos (Windows)
         // Si usas Windows, descomenta la línea de windows.h y usa Sleep(1000)
         // Si usas Linux/macOS, usa sleep(1)
-        sleep(1); // Para Linux/macOS
+        usleep(2000); // Para Linux/macOS
     }
     return 0;
 }
+*/
+#include <stdio.h>
+#include <time.h> // Para clock() y difftime()
 
+int main() {
+    clock_t inicio = clock();
+    double intervalo_ms = 2.0;
+    clock_t intervalo = (clock_t)(intervalo_ms * CLOCKS_PER_SEC);
+
+    while(1){
+        clock_t actual = clock();
+        if (actual - inicio >= intervalo) {
+            printf("¡Código ejecutado (cada %1.2ld s)!\n", intervalo / 1000);
+            printf("¡Código ejecutado (cada %1.2ld s)!\n", (actual - inicio) / 1000);
+            inicio = actual;
+        }
+    }
+
+    /*
+    double intervalo = 1.0; // Intervalo en segundos (1 segundo)
+    clock_t intervalo_ms = (clock_t)(intervalo * CLOCKS_PER_SEC); // Convierte a ticks
+
+    printf("Iniciando temporizador...\n");
+
+    while (1) { // Bucle infinito para mantener el programa activo
+        clock_t actual = clock(); // Obtiene el tiempo actual
+        if (actual - inicio >= intervalo_ms) {
+            printf("¡Código ejecutado (cada %g s)!\n", intervalo);
+            inicio = actual; // Reinicia el temporizador
+        }
+        // Aquí puedes poner otras tareas que no sean bloqueantes
+        // o un pequeño sleep para no saturar la CPU, ej: usleep(1000);
+    }
+    */
+    return 0;
+}
 
 /*
 #include <stdio.h>
