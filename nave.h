@@ -1,6 +1,8 @@
 #ifndef NAVE_H
 #define NAVE_H
 
+#include <time.h>
+
 #include "vectores.h"
  
 extern double velocidad;
@@ -30,7 +32,7 @@ int sistemaVelocidad(double vel);
 double setVelocidad();
 
 // int actualizarPos(Vec2* pos);
-int actualizarPos(Nave* nave);
+int actualizarPos(Nave* nave, clock_t rejSeg);
 
 #endif
 

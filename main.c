@@ -15,7 +15,7 @@ double velocidad;
 int main(int argv, char* argc[])
 {
     clock_t inicio = clock();
-    double intervalo_ms = 1.0;
+    double intervalo_ms = 2.0;
     clock_t intervalo = (clock_t)(intervalo_ms * CLOCKS_PER_SEC);
 
     iniciarTerminal();
@@ -37,17 +37,19 @@ int main(int argv, char* argc[])
 
         actualizarMapa(&mapa, nav.posisionNave);
 
+        if (actual - inicio >= intervalo) {
+            inicio = actual;
+        }
+
         /**
          * Mostrar datos
         */
         printf("\e[%d;%dH%.1f", 50, 55, velocidad);
-        printf("\e[%d;%dH%d", 50, 50, actualizarPos(&nav));
+        printf("\e[%d;%dH%d", 50, 50, actualizarPos(&nav, (clock_t)(actual - inicio)));
         actualizarPantalla(keyPresionado('-'));
 
-        if (actual - inicio >= intervalo) {
-            inicio = actual;
-        }
-        printf("\e[%d;%dH%ld", 50, 55, inicio);
+    
+        
     
         // sleep_ms(5);
         // printf("\e[2;2H%d, %d", pos.x, pos.y);

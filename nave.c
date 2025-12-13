@@ -59,6 +59,7 @@ int sistemaVelocidad(double vel) {
         return 1;
     return 0;
 }
+
 /*
 int actualizarPos(Vec2* pos)
 {
@@ -81,7 +82,7 @@ int actualizarPos(Vec2* pos)
 }
 */
 
-int actualizarPos(Nave* nave)
+int actualizarPos(Nave* nave, clock_t rejSeg)
 {
     /*
     switch(nave->pc_nave){
@@ -100,11 +101,18 @@ int actualizarPos(Nave* nave)
             break;
     }
     */
+   printf("\e[%d;%dH%ld", 50, 55, rejSeg / CLOCKS_PER_SEC);
+   clock_t tiempoSeg = rejSeg / CLOCKS_PER_SEC;
 
     if(sistemaVelocidad(velocidad)){
-        if(keyPresionado('w') || keyPresionado('W')){
+        if(tiempoSeg == 1.0){
             nave->posisionNave.y -= 1;
+        
         }
+
+        // if(keyPresionado('w') || keyPresionado('W')){
+        //     nave->posisionNave.y -= 1;
+        // }
         else if(keyPresionado('s') || keyPresionado('S')){
             nave->posisionNave.y += 1;
         }
