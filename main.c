@@ -10,13 +10,9 @@ unsigned int ANCHO;
 unsigned int ALTO;
 
 double velocidad;
-// unsigned char utimaT;
 
 int main(int argv, char* argc[])
 {
-    clock_t inicio = clock();
-    double intervalo_ms = 2.0;
-    clock_t intervalo = (clock_t)(intervalo_ms * CLOCKS_PER_SEC);
 
     iniciarTerminal();
 
@@ -26,31 +22,20 @@ int main(int argv, char* argc[])
     cargarMapa(&mapa, nav.posisionNave);
 
     while (1){
-        clock_t actual = clock();
         procesarEventos();
         iniciarVentana();
         // crearPantalla(ALTO, ANCHO);
 
         dibujarMapa(&mapa, nav.posisionNave, ALTO, ANCHO);
-
-        // actualizarPos(&nav);
-
+        actualizarPos(&nav);
         actualizarMapa(&mapa, nav.posisionNave);
 
-        if (actual - inicio >= intervalo) {
-            inicio = actual;
-        }
-
+        actualizarPantalla(keyPresionado('-'));
         /**
          * Mostrar datos
         */
-        printf("\e[%d;%dH%.1f", 50, 55, velocidad);
-        printf("\e[%d;%dH%d", 50, 50, actualizarPos(&nav, (clock_t)(actual - inicio)));
-        actualizarPantalla(keyPresionado('-'));
+        printf("\e[20;50H%.1f", velocidad);
 
-    
-        
-    
         // sleep_ms(5);
         // printf("\e[2;2H%d, %d", pos.x, pos.y);
     }

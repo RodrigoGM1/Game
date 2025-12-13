@@ -18,22 +18,28 @@ enum Puntos_Cadinales {
 
 typedef struct _nave {
     char* nombre;
-    double velocidadActual;
-    enum Puntos_Cadinales pc_nave;
     Vec2 posisionNave;
-    Vecd2 vel_m_m;
+    enum Puntos_Cadinales pc_nave;
+    double velocidadActual;
+    double velocidaMax;
+    double velocidaMin;
 } Nave;
 
 Nave inciarNave(int posisionIx, int posisionIy);
 
 void procesarEventos();
 int keyPresionado(char key);
+int actualizarPos(Nave* pos);
+
+
+
+
+/*
 int sistemaVelocidad(double vel);
 double setVelocidad();
-
-// int actualizarPos(Vec2* pos);
 int actualizarPos(Nave* nave, clock_t rejSeg);
-
+double velocidadNave(Vecd2 velNave);
+*/
 #endif
 
 // char nave[10][10] = 
