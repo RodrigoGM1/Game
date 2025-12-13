@@ -11,6 +11,8 @@ static char keyEstado[256] = {0};
  * Declaraciones de funciones internas
 */
 
+int sistemaVelocidad(double vel, double* velocidadActualNave);
+
 Nave inciarNave(int posisionIx, int posisionIy)
 {
     Nave inciarNav;
@@ -43,19 +45,21 @@ int keyPresionado(char key)
     return keyEstado[(unsigned char)key];
 }
 
-int sistemaVelocidad(double vel) {
-    if(keyPresionado('z')){
-        if(velocidad > -0.5)
-            velocidad -= 0.1;
-        else
-            velocidad = -0.5;
-    }else if(keyPresionado('x')){
+int sistemaVelocidad(double vel, double* velocidadActualNave) {
+    if(keyPresionado('x')){
         if(velocidad < 1.0)
             velocidad += 0.1;
         else
             velocidad = 1.0;
+    }else if(keyPresionado('z')){
+        if(velocidad > -0.5)
+            velocidad -= 0.1;
+        else
+            velocidad = -0.5;
     }
-    
+
+
+
     if(vel >= 0.1 || vel <= -0.1)
         return 1;
     return 0;
@@ -63,7 +67,7 @@ int sistemaVelocidad(double vel) {
 
 int actualizarPos(Nave* nave)
 {
-    if(sistemaVelocidad(velocidad)){
+    if(sistemaVelocidad(velocidad, &nave->velocidadActual)){
         if(keyPresionado('w') || keyPresionado('W')){
             nave->posisionNave.y -= 1;
         }
