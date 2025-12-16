@@ -6,12 +6,14 @@
 #include <unistd.h>
 
 static char keyEstado[256] = {0};
+// double velocidad;
 
 /**
  * Declaraciones de funciones internas
 */
 
-int sistemaVelocidad(double vel, double* velocidadActualNave);
+// int sistemaVelocidad(double* velocidadActualNave);
+// int sistemaDec();
 
 Nave inciarNave(int posisionIx, int posisionIy)
 {
@@ -22,8 +24,7 @@ Nave inciarNave(int posisionIx, int posisionIy)
     inciarNav.posisionNave.y = posisionIy;
     inciarNav.pc_nave = ESTE;
     inciarNav.velocidadActual = 0.0;
-    inciarNav.velocidaMax = 1.5;
-    inciarNav.velocidaMin = 2.5;
+    inciarNav.velocidaMax = 2.5;
 
     return inciarNav;
 }
@@ -44,30 +45,10 @@ int keyPresionado(char key)
 {
     return keyEstado[(unsigned char)key];
 }
-
-int sistemaVelocidad(double vel, double* velocidadActualNave) {
-    if(keyPresionado('x')){
-        if(velocidad < 1.0)
-            velocidad += 0.1;
-        else
-            velocidad = 1.0;
-    }else if(keyPresionado('z')){
-        if(velocidad > -0.5)
-            velocidad -= 0.1;
-        else
-            velocidad = -0.5;
-    }
-
-
-
-    if(vel >= 0.1 || vel <= -0.1)
-        return 1;
-    return 0;
-}
-
+/*
 int actualizarPos(Nave* nave)
 {
-    if(sistemaVelocidad(velocidad, &nave->velocidadActual)){
+    if(sistemaDec()){
         if(keyPresionado('w') || keyPresionado('W')){
             nave->posisionNave.y -= 1;
         }
@@ -84,12 +65,48 @@ int actualizarPos(Nave* nave)
 
     return 0;
 }
+*/
+int actualizarPos(Nave* nave)
+{
+    if(keyPresionado('x')){
+        if(nave->velocidadActual < nave->velocidaMax - 0.1)
+            nave->velocidadActual += 0.1;
+        else
+            nave->velocidadActual = nave->velocidaMax;
+    }else if(keyPresionado('z')){
+        if(nave->velocidadActual > -nave->velocidaMax + 0.1)
+            nave->velocidadActual -= 0.1;
+        else
+            nave->velocidadActual = -nave->velocidaMax;
+    }
+    
 
+    printf("\e[20;50H%.1f", nave->velocidadActual);
 
+    return 0;
+}
+/*
+int sistemaDec()
+{
+    if(keyPresionado('x')){
+        if(velocidad < 1.0)
+            velocidad += 0.1;
+        else
+            velocidad = 1.0;
+    }else if(keyPresionado('z')){
+        if(velocidad > -1.0)
+            velocidad -= 0.1;
+        else
+            velocidad = -1.0;
+    }
 
-
-
-
+    if(velocidad >= 0.1)
+        return 1;
+    else if(velocidad <= -0.1)
+        return -1;
+    return 0;
+}
+*/
 /*
 int sistemaVelocidad(double vel) {
     if(keyPresionado('z')){
@@ -159,4 +176,4 @@ double velocidadNave(Vecd2 velNave)
 {
     return 2.5;
 }
-    */
+*/

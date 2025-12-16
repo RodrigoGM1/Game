@@ -635,7 +635,7 @@ int main() {
 #include <time.h> // Para clock() y difftime()
 
 int main() {
-    
+    /*
     clock_t start = clock(); // Inicia el temporizador
     int contador = 0;
     while ((clock() - start) < CLOCKS_PER_SEC) { // CLOCKS_PER_SEC es el número de ticks por segundo
@@ -643,20 +643,33 @@ int main() {
     }
     printf("Se ejecutó %d veces en aproximadamente un segundo.\n", contador);
     return 0;
-    /*
+    */
+    
     clock_t inicio = clock();
-    double intervalo_ms = 2.0;
+    double intervalo_ms = 1.0;
     clock_t intervalo = (clock_t)(intervalo_ms * CLOCKS_PER_SEC);
 
+    int i = 0;
+    double max = 10000000000 / 2;
+
     while(1){
-        clock_t actual = clock();
-        if (actual - inicio >= intervalo) {
-            printf("¡Código ejecutado (cada %1.2ld s)!\n", intervalo / 1000);
-            printf("¡Código ejecutado (cada %1.2ld s)!\n", (actual - inicio) / 1000);
-            inicio = actual;
+        // clock_t actual = clock();
+        // if (actual - inicio >= intervalo) {
+        //     printf("¡Código ejecutado (cada %1.2ld s)!\n", intervalo / 1000);
+        //     printf("¡Código ejecutado (cada %1.2ld s)!\n", (actual - inicio) / 1000);
+        //     inicio = actual;
+        // }
+
+        for(i; i < max + 1; i++){
+            if(i == max){
+                printf("%d\n", i);
+                i = 0;
+            }
         }
+
+        
     }
-    */
+    
     /*
     double intervalo = 1.0; // Intervalo en segundos (1 segundo)
     clock_t intervalo_ms = (clock_t)(intervalo * CLOCKS_PER_SEC); // Convierte a ticks

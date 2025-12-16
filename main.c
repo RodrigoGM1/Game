@@ -9,7 +9,7 @@
 unsigned int ANCHO;
 unsigned int ALTO;
 
-double velocidad;
+// double velocidad;
 
 int main(int argv, char* argc[])
 {
@@ -34,7 +34,7 @@ int main(int argv, char* argc[])
         /**
          * Mostrar datos
         */
-        printf("\e[20;50H%.1f", velocidad);
+        // printf("\e[20;50H%.1f", velocidad);
 
         // sleep_ms(5);
         // printf("\e[2;2H%d, %d", pos.x, pos.y);

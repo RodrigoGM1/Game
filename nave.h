@@ -4,8 +4,6 @@
 #include <time.h>
 
 #include "vectores.h"
- 
-extern double velocidad;
 
 enum Puntos_Cadinales {
     ESTE,
@@ -20,16 +18,15 @@ typedef struct _nave {
     char* nombre;
     Vec2 posisionNave;
     enum Puntos_Cadinales pc_nave;
-    double velocidadActual;
-    double velocidaMax;
-    double velocidaMin;
+    float velocidadActual;
+    float velocidaMax;
 } Nave;
 
 Nave inciarNave(int posisionIx, int posisionIy);
 
 void procesarEventos();
 int keyPresionado(char key);
-int actualizarPos(Nave* pos);
+int actualizarPos(Nave* nave);
 
 
 
