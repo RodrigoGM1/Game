@@ -631,11 +631,12 @@ int main() {
     return 0;
 }
 */
+/*
 #include <stdio.h>
 #include <time.h> // Para clock() y difftime()
 
 int main() {
-    /*
+    
     clock_t start = clock(); // Inicia el temporizador
     int contador = 0;
     while ((clock() - start) < CLOCKS_PER_SEC) { // CLOCKS_PER_SEC es el número de ticks por segundo
@@ -643,7 +644,7 @@ int main() {
     }
     printf("Se ejecutó %d veces en aproximadamente un segundo.\n", contador);
     return 0;
-    */
+    
     
     clock_t inicio = clock();
     double intervalo_ms = 1.0;
@@ -669,8 +670,10 @@ int main() {
 
         
     }
-    
-    /*
+    return 0;
+}
+*/
+/*
     double intervalo = 1.0; // Intervalo en segundos (1 segundo)
     clock_t intervalo_ms = (clock_t)(intervalo * CLOCKS_PER_SEC); // Convierte a ticks
 
@@ -685,9 +688,8 @@ int main() {
         // Aquí puedes poner otras tareas que no sean bloqueantes
         // o un pequeño sleep para no saturar la CPU, ej: usleep(1000);
     }
-    */
-    return 0;
-}
+*/
+
 
 /*
 #include <stdio.h>
@@ -710,3 +712,39 @@ int main()
     return 0;
 }
 */
+
+#include <X11/Xlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+   Display *d;
+   Window w;
+   XEvent e;
+   const char *msg = "*";
+   int s;
+
+   d = XOpenDisplay(NULL);
+   if (d == NULL) {
+      fprintf(stderr, "Cannot open display\n");
+      exit(1);
+   }
+
+   s = DefaultScreen(d);
+   w = XCreateSimpleWindow(d, RootWindow(d, s), 10, 10, 1820, 920, 1, BlackPixel(d, s), WhitePixel(d, s));
+   XSelectInput(d, w, ExposureMask | KeyPressMask);
+   XMapWindow(d, w);
+
+   while (1) {
+      XNextEvent(d, &e);
+      if (e.type == Expose) {
+        XFillRectangle(d, w, DefaultGC(d, s), 20, 20, 1, 1);
+        XDrawString(d, w, DefaultGC(d, s), 10, 50, msg, strlen(msg));
+      }
+      if (e.type == KeyPress)
+         break;
+   }
+   XCloseDisplay(d);
+   return 0;
+}

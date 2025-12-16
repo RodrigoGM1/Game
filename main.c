@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include <time.h>
 
+#include <video/edid.h>
+#include <video/sisfb.h>
+#include <video/uvesafb.h>
+
 unsigned int ANCHO;
 unsigned int ALTO;
 
