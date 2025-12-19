@@ -68,6 +68,20 @@ int actualizarPos(Nave* nave)
 */
 int actualizarPos(Nave* nave)
 {
+    double i;
+    double max = 100000000 / nave->velocidadActual; 
+    if(nave->velocidadActual != 0){
+
+        // printf("\e[21;50HHola\n");
+        
+        for(i = 0; i < max + 1; i++){
+            if(i == max){
+                printf("\e[21;50HHola%d\n", 1);
+                i = 0;
+            }
+        }
+    }
+
     if(keyPresionado('x')){
         if(nave->velocidadActual < nave->velocidaMax - 0.1)
             nave->velocidadActual += 0.1;
@@ -82,6 +96,7 @@ int actualizarPos(Nave* nave)
     
 
     printf("\e[20;50H%.1f", nave->velocidadActual);
+    // printf("\e[21;50H%ld", intervalo_ms);
 
     return 0;
 }

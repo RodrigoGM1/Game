@@ -631,12 +631,12 @@ int main() {
     return 0;
 }
 */
-/*
+
 #include <stdio.h>
 #include <time.h> // Para clock() y difftime()
 
 int main() {
-    
+    /*
     clock_t start = clock(); // Inicia el temporizador
     int contador = 0;
     while ((clock() - start) < CLOCKS_PER_SEC) { // CLOCKS_PER_SEC es el número de ticks por segundo
@@ -649,8 +649,8 @@ int main() {
     clock_t inicio = clock();
     double intervalo_ms = 1.0;
     clock_t intervalo = (clock_t)(intervalo_ms * CLOCKS_PER_SEC);
-
-    int i = 0;
+    */
+    double i;
     double max = 10000000000 / 2;
 
     while(1){
@@ -661,9 +661,9 @@ int main() {
         //     inicio = actual;
         // }
 
-        for(i; i < max + 1; i++){
+        for(i = 0; i < max + 1; i++){
             if(i == max){
-                printf("%d\n", i);
+                printf("Hola\n");
                 i = 0;
             }
         }
@@ -672,7 +672,7 @@ int main() {
     }
     return 0;
 }
-*/
+
 /*
     double intervalo = 1.0; // Intervalo en segundos (1 segundo)
     clock_t intervalo_ms = (clock_t)(intervalo * CLOCKS_PER_SEC); // Convierte a ticks
@@ -712,39 +712,82 @@ int main()
     return 0;
 }
 */
-
-#include <X11/Xlib.h>
-#include <stdio.h>
+/*
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
-int main(void) {
-   Display *d;
-   Window w;
-   XEvent e;
-   const char *msg = "*";
-   int s;
+#include <xcb/xcb.h>
 
-   d = XOpenDisplay(NULL);
-   if (d == NULL) {
-      fprintf(stderr, "Cannot open display\n");
-      exit(1);
-   }
+int main ()
+{
+  xcb_connection_t    *c;
+  xcb_screen_t        *screen;
+  xcb_drawable_t       win;
+  xcb_gcontext_t       foreground;
+  xcb_gcontext_t       background;
+  xcb_generic_event_t *e;
+  uint32_t             mask = 0;
+  uint32_t             values[2];
 
-   s = DefaultScreen(d);
-   w = XCreateSimpleWindow(d, RootWindow(d, s), 10, 10, 1820, 920, 1, BlackPixel(d, s), WhitePixel(d, s));
-   XSelectInput(d, w, ExposureMask | KeyPressMask);
-   XMapWindow(d, w);
+  char string[] = "Hello, XCB!";
+  uint8_t string_len = strlen(string);
 
-   while (1) {
-      XNextEvent(d, &e);
-      if (e.type == Expose) {
-        XFillRectangle(d, w, DefaultGC(d, s), 20, 20, 1, 1);
-        XDrawString(d, w, DefaultGC(d, s), 10, 50, msg, strlen(msg));
-      }
-      if (e.type == KeyPress)
-         break;
-   }
-   XCloseDisplay(d);
-   return 0;
+  xcb_rectangle_t rectangles[] = {
+    {40, 40, 20, 20},
+  };
+
+  c = xcb_connect (NULL, NULL);
+
+  screen = xcb_setup_roots_iterator (xcb_get_setup (c)).data;
+
+  win = screen->root;
+
+  foreground = xcb_generate_id (c);
+  mask = XCB_GC_FOREGROUND | XCB_GC_GRAPHICS_EXPOSURES;
+  values[0] = screen->black_pixel;
+  values[1] = 0;
+  xcb_create_gc (c, foreground, win, mask, values);
+
+  background = xcb_generate_id (c);
+  mask = XCB_GC_BACKGROUND | XCB_GC_GRAPHICS_EXPOSURES;
+  values[0] = screen->white_pixel;
+  values[1] = 0;
+  xcb_create_gc (c, background, win, mask, values);
+
+  win = xcb_generate_id(c);
+  mask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
+  values[0] = screen->white_pixel;
+  values[1] = XCB_EVENT_MASK_EXPOSURE | XCB_EVENT_MASK_KEY_PRESS;
+  xcb_create_window (c,                             
+                     XCB_COPY_FROM_PARENT,        
+                     win,                          
+                     screen->root,                
+                     0, 0,                         
+                     150, 150,                  
+                     50,                        
+                     XCB_WINDOW_CLASS_INPUT_OUTPUT,
+                     screen->root_visual,        
+                     mask, values);                
+
+  xcb_map_window (c, win);
+
+  xcb_flush (c);
+
+  while ((e = xcb_wait_for_event (c))) {
+    switch (e->response_type & ~0x80) {
+    case XCB_EXPOSE:
+      xcb_poly_rectangle (c, win, foreground, 1, rectangles);
+      xcb_image_text_8 (c, string_len, win, background, 20, 20, string);
+      xcb_flush (c);
+      break;
+    case XCB_KEY_PRESS:
+      goto endloop;
+    }
+    free (e);
+  }
+  endloop:
+
+  return 0;
 }
+*/
